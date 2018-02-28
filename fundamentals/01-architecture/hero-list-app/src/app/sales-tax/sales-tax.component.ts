@@ -11,9 +11,12 @@ import { TaxRateService }  from '../tax-rate.service';
 })
 export class SalesTaxComponent implements OnInit {
 
-  constructor() { }
+  constructor(private salesTaxService: SalesTaxService) { }
 
   ngOnInit() {
   }
 
+  getTax(value: string | number) {
+    return this.salesTaxService.getVAT(value);
+  }
 }
