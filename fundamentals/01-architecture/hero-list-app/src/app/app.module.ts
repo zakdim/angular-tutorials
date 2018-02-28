@@ -8,12 +8,14 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
 import { BackendService }      from './backend.service';
 import { Logger }      from './logger.service';
+import { SalesTaxComponent } from './sales-tax/sales-tax.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroListComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    SalesTaxComponent
   ],
   imports: [
     BrowserModule,

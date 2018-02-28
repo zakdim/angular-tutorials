@@ -9,7 +9,7 @@ export class HeroService {
   private heroes: Hero[] = [];
 
   constructor(
-    private backend: BackendService;
+    private backend: BackendService,
     private logger: Logger
   ) { }
 
