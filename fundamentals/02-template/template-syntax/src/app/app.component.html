@@ -59,6 +59,22 @@
 
 <a class="to-toc" href="#toc">top</a>
 
+<!-- Two-way binding ( [(...)] ) -->
+<hr><h2 id="two-way">Two-way Binding</h2>
+<div id="two-way-1">
+  <app-sizer [(size)]="fontSizePx"></app-sizer>
+  <div [style.font-size.px]="fontSizePx">Resizable Text</div>
+  <label>FontSize (px): <input [(ngModel)]="fontSizePx"></label>
+</div>
+<br>
+<div id="two-way-2">
+  <h3>De-sugared two-way binding</h3>
+  <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+</div>
+
+<a class="to-toc" href="#toc">top</a>
+
+
 <!-- NgClass binding -->
 <hr><h2 id="ngClass">NgClass Binding</h2>
 

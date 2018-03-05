@@ -15,6 +15,19 @@ export class AppComponent implements OnInit {
 
   currentHero: Hero;
 
+
+  deleteHero(hero: Hero) {
+    this.alert(`Delete ${hero ? hero.name : 'the hero'}.`);
+  }
+
+  evilTitle = 'Template <script>alert("evil never sleeps")</script>Syntax';
+
+  fontSizePx = 16;
+
+  title = 'Template Syntax';
+
+  getVal(): number { return 2; }
+
   // trackBy change counting
   heroesNoTrackByCount   = 0;
   heroesWithTrackByCount = 0;
@@ -34,12 +47,15 @@ export class AppComponent implements OnInit {
   isSpecial = true;
   isUnchanged = true;
   
-  canSave =  true;
-
   actionName = 'Go for it';
   badCurly = 'bad curly';
   classes = 'special';
   help = '';
+
+  alert(msg?: string)      { window.alert(msg); }
+  callFax(value: string)   { this.alert(`Faxing ${value} ...`); }
+  callPhone(value: string) { this.alert(`Calling ${value} ...`); }
+  canSave =  true;
 
   ngOnInit() {
     this.resetHeroes();
@@ -55,6 +71,10 @@ export class AppComponent implements OnInit {
     this.heroesWithTrackByCountReset = 0;
   }
   
+  setUppercaseName(name: string) {
+    this.currentHero.name = name.toUpperCase();
+  }
+
   currentClasses: {};
   setCurrentClasses() {
     // CSS classes: added/removed per current state of component properties
