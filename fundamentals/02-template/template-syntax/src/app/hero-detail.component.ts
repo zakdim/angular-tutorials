@@ -1,5 +1,5 @@
 /* tslint:disable use-input-property-decorator use-output-property-decorator */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 import { Hero } from './hero';
 
@@ -8,16 +8,15 @@ import { Hero } from './hero';
   inputs: ['hero'],
   outputs: ['deleteRequest'],
   styles: ['button {margin-left: 8px} div {margin: 8px 0} img {height:24px}'],
-  template: `
-  <div>
-    <img src="{{heroImageUrl}}">
+  template: `<div>
+    <img src="assets/images/hero.png">
     <span [style.text-decoration]="lineThrough">
       {{prefix}} {{hero?.name}}
     </span>
     <button (click)="delete()">Delete</button>
   </div>`
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
   hero: Hero = new Hero(-1, '', 'Zzzzzzzz'); // default sleeping hero
   // heroImageUrl = 'http://www.wpclipart.com/cartoon/people/hero/hero_silhoutte_T.png';
   // Public Domain terms of use: http://www.wpclipart.com/terms.html
@@ -27,6 +26,10 @@ export class HeroDetailComponent {
 
   // This component makes a request but it can't actually delete a hero.
   deleteRequest = new EventEmitter<Hero>();
+
+  ngOnInit() {
+    
+  }
 
   delete() {
     this.deleteRequest.emit(this.hero);
@@ -63,3 +66,10 @@ export class BigHeroDetailComponent extends HeroDetailComponent {
     this.deleteRequest.emit(this.hero);
   }
 }
+
+
+/*
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
