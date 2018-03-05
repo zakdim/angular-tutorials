@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, 
+  QueryList, ElementRef, ViewChildren } from '@angular/core';
 
 import { Hero } from './hero';
 
@@ -7,7 +8,7 @@ import { Hero } from './hero';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   name: string = Hero.heroes[0].name;
   hero: Hero; // defined to demonstrate template context precedence
@@ -47,6 +48,8 @@ export class AppComponent implements OnInit {
   isSpecial = true;
   isUnchanged = true;
   
+  get nullHero(): Hero { return null; }
+
   actionName = 'Go for it';
   badCurly = 'bad curly';
   classes = 'special';
@@ -63,6 +66,29 @@ export class AppComponent implements OnInit {
     this.setCurrentStyles();
   }
 
+  ngAfterViewInit() {
+    // Detect effects of NgForTrackBy
+    trackChanges(this.heroesNoTrackBy,   () => this.heroesNoTrackByCount++);
+    trackChanges(this.heroesWithTrackBy, () => this.heroesWithTrackByCount++);
+  }
+
+  @ViewChildren('noTrackBy')   heroesNoTrackBy:   QueryList<ElementRef>;
+  @ViewChildren('withTrackBy') heroesWithTrackBy: QueryList<ElementRef>;
+
+  changeIds() {
+    this.resetHeroes();
+    this.heroes.forEach(h => h.id += 10 * this.heroIdIncrement++);
+    this.heroesWithTrackByCountReset = -1;
+  }
+
+  clearTrackByCounts() {
+    const trackByCountReset = this.heroesWithTrackByCountReset;
+    this.resetHeroes();
+    this.heroesNoTrackByCount = -1;
+    this.heroesWithTrackByCount = trackByCountReset;
+    this.heroIdIncrement = 1;
+  }
+
   // updates with fresh set of cloned heroes
   resetHeroes() {
     this.heroes = Hero.heroes.map(hero => hero.clone());
@@ -71,6 +97,10 @@ export class AppComponent implements OnInit {
     this.heroesWithTrackByCountReset = 0;
   }
   
+  trackByHeroes(index: number, hero: Hero): number { return hero.id; }
+
+  trackById(index: number, item: any): number { return item['id']; }
+
   setUppercaseName(name: string) {
     this.currentHero.name = name.toUpperCase();
   }
@@ -94,5 +124,20 @@ export class AppComponent implements OnInit {
       'font-size':   this.isSpecial    ? '24px'   : '12px'
     };
   }
-  
 }
+
+// helper to track changes to viewChildren
+function trackChanges(views: QueryList<ElementRef>, changed: () => void) {
+  let oldRefs = views.toArray();
+  views.changes.subscribe((changes: QueryList<ElementRef>) => {
+      const changedRefs = changes.toArray();
+      // Check if every changed Element is the same as old and in the same position
+      const isSame = oldRefs.every((v, i) => v.nativeElement === changedRefs[i].nativeElement);
+      if (!isSame) {
+        oldRefs = changedRefs;
+        // wait a tick because called after views are constructed
+        setTimeout(changed, 0);
+      }
+  });
+}
+
