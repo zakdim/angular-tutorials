@@ -7,6 +7,7 @@ import { SizerComponent } from './sizer/sizer.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { heroSwitchComponents } from './hero-switch/hero-switch.components';
 import { HeroFormComponent } from './hero-form/hero-form.component';
+import { ClickDirective, ClickDirective2 } from './click.directive';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
     SizerComponent,
     HeroDetailComponent,
     heroSwitchComponents,
-    HeroFormComponent
+    HeroFormComponent,
+    ClickDirective,
+    ClickDirective2
   ],
   imports: [
     BrowserModule,

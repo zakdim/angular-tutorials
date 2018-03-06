@@ -3,6 +3,8 @@ import { Component, OnInit, AfterViewInit,
 
 import { Hero } from './hero';
 
+export enum Color {Red, Green, Blue};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +16,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   hero: Hero; // defined to demonstrate template context precedence
   heroes: Hero[];
 
-  currentHero: Hero;
+  clicked = '';
+  clickMessage = '';
+  clickMessage2 = '';
 
+  currentHero: Hero;
 
   deleteHero(hero: Hero) {
     this.alert(`Delete ${hero ? hero.name : 'the hero'}.`);
@@ -124,6 +129,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       'font-size':   this.isSpecial    ? '24px'   : '12px'
     };
   }
+
+  
+  onSave(event: KeyboardEvent) {
+    let evtMsg = event ? ' Event target is ' + (<HTMLElement>event.target).textContent : '';
+    this.alert('Saved.' + evtMsg);
+    if (event) { event.stopPropagation(); }
+  }
+
+  onSubmit() {/* referenced but not used */}
+
+  product = {
+    name: 'frimfram',
+    price: 42
+  };
 }
 
 // helper to track changes to viewChildren
