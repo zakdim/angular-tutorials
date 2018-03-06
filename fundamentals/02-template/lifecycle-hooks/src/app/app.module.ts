@@ -3,15 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { PickABooParentComponent } from './pick-a-boo-parent.component';
+import { PeekABooComponent } from './peek-a-boo.component';
+import { PeekABooParentComponent } from './peek-a-boo-parent.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    PeekABooComponent,
+    PeekABooParentComponent
   ],
   bootstrap: [AppComponent]
 })

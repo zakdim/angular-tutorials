@@ -13,8 +13,7 @@ import { LoggerService } from './logger.service';
     </button>
     <button (click)="updateHero()" [hidden]="!hasChild">Update Hero</button>
 
-    <peek-a-boo *ngIf="hasChild" [name]="heroName">
-    </peek-a-boo>
+    <peek-a-boo *ngIf="hasChild" [name]="heroName"></peek-a-boo>
 
     <h4>-- Lifecycle Hook Log --</h4>
     <div *ngFor="let msg of hookLog">{{msg}}</div>
@@ -25,7 +24,8 @@ import { LoggerService } from './logger.service';
 })
 export class PeekABooParentComponent {
 
-  hasChild = false;
+  // hasChild = false;
+  hasChild = true;
   hookLog: string[];
 
   heroName = 'Windstorm';

@@ -11,7 +11,19 @@ import {
 } from '@angular/core';
 import { Component, Input } from '@angular/core';
 import { LoggerService }    from './logger.service';
-import { PickABoo } from './pick-a-boo';
+
+let nextId = 1;
+
+export class PeekABoo implements OnInit {
+  constructor(private logger: LoggerService) { }
+
+  // implement OnInit's `ngOnInit` method
+  ngOnInit() { this.logIt(`OnInit`); }
+
+  logIt(msg: string) {
+    this.logger.log(`#${nextId++} ${msg}`);
+  }
+}
 
 @Component({
   selector: 'peek-a-boo',
