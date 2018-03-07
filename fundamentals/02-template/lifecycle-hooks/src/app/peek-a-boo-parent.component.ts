@@ -24,8 +24,8 @@ import { LoggerService } from './logger.service';
 })
 export class PeekABooParentComponent {
 
-  // hasChild = false;
-  hasChild = true;
+  hasChild = false;
+  // hasChild = true;
   hookLog: string[];
 
   heroName = 'Windstorm';
