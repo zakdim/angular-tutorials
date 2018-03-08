@@ -13,6 +13,11 @@ import {
   OnChangesComponent
 } from './on-changes.component';
 
+import {
+  DoCheckParentComponent,
+  DoCheckComponent
+} from './do-check.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,7 +30,9 @@ import {
     SpyParentComponent,
     SpyDirective,
     OnChangesParentComponent,
-    OnChangesComponent
+    OnChangesComponent,
+    DoCheckParentComponent,
+    DoCheckComponent
   ],
   bootstrap: [AppComponent]
 })
