@@ -32,6 +32,7 @@ export class DoCheckComponent implements DoCheck {
   noChangeCount = 0;
 
   ngDoCheck() {
+    // debugger
 
     if (this.hero.name !== this.oldHeroName) {
       this.changeDetected = true;
