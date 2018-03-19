@@ -3,13 +3,10 @@ import { Hero } from './hero';
 
 @Component({
   selector: 'app-root',
-  // template: `
-  //   <h1>Tour of Heroes</h1>
-  //   <app-hero-main [hero]="hero"></app-hero-main>
-  // `,
   template: `
-  <h1>Tour of Heroes</h1>
-`,
+    <h1>Tour of Heroes</h1>
+    <app-hero-main [hero]="hero"></app-hero-main>
+  `,
   styles: ['h1 { font-weight: normal; }']
 })
 export class HeroAppComponent {
