@@ -147,7 +147,7 @@ describe('Component Communication Cookbook Tests', function () {
     });
     // ...
   });
-/*
+
   // Can't run timer tests in protractor because
   // interaction w/ zones causes all tests to freeze & timeout.
   xdescribe('Parent calls child via local var', function() {
@@ -180,7 +180,7 @@ describe('Component Communication Cookbook Tests', function () {
     // ...
   }
 
-
+/*
   describe('Parent and children communicate via a service', function() {
     // ...
     it('should announce a mission', function () {
