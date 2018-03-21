@@ -24,3 +24,20 @@
   Expression is false and ngIf is false.
   This paragraph is not in the DOM.
 </p>
+
+<p [style.display]="'block'">
+  Expression sets display to "block".
+  This paragraph is visible.
+</p>
+<p [style.display]="'none'">
+  Expression sets display to "none".
+  This paragraph is hidden but still in the DOM.
+</p>
+
+<h4>NgIf with template</h4>
+<p>&lt;ng-template&gt; element</p>
+<ng-template [ngIf]="hero">
+  <div class="name">{{hero.name}}</div>
+</ng-template>
+
+<hr>
