@@ -1,0 +1,26 @@
+<h1>Structural Directives</h1>
+
+<p>Conditional display of hero</p>
+
+<blockquote>
+<div *ngIf="hero" class="name">{{hero.name}}</div>
+</blockquote>
+
+<p>List of heroes</p>
+
+<ul>
+  <li *ngFor="let hero of heroes">{{hero.name}}</li>
+</ul>
+
+<hr>
+
+<h2 id="ngIf">NgIf</h2>
+
+<p *ngIf="true">
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+</p>
+<p *ngIf="false">
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+</p>
