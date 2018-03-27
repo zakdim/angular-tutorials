@@ -1,10 +1,12 @@
-import { Component }           from '@angular/core';
-
+import { Component } from '@angular/core';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+  selector: 'app-loop-back',
+  template: `
+    <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+  `
 })
-export class AppComponent { }
+export class LoopbackComponent { }
 
 
 /*
