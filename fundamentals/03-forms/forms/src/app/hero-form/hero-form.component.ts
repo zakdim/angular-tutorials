@@ -16,8 +16,20 @@ export class HeroFormComponent {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() { 
+    this.submitted = true; 
+    console.log("form submitted");
+  }
+
+  newHero() {
+    this.model = new Hero(42, '', '');
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
+
+  showFormControls(form: any) {
+    return form && form.controls['name'] &&
+    form.controls['name'].value; // Dr. IQ
+  }
 }
