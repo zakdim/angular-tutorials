@@ -1,9 +1,6 @@
-<h3><i>Final Demo</i></h3>
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
-    <div style="margin-bottom: 1em">
-        <button type="submit" [disabled]="heroForm.pristine" class="btn btn-success">Save</button> &nbsp;
-        <button type="button" (click)="revert()" [disabled]="heroForm.pristine" class="btn btn-danger">Revert</button>
-    </div>
+
+<h3><i>Using FormArray to add groups</i></h3>
+<form [formGroup]="heroForm">
     <div class="form-group">
         <label>Name</label>
         <input class="form-control" formControlName="name">
@@ -15,7 +12,7 @@
                 <h4 class="mb-0 float-left">Address #{{i + 1}}</h4>
                 <button type="button" class="btn btn-sm btn-secondary float-right" (click)="removeLair(i)">
                     Remove
-                </button>
+                </button>              
             </div>
             <div class="card-body">
                 <div class="form-group">
@@ -64,8 +61,7 @@
 </form>
 
 <p class="mt-2">heroForm value: {{ heroForm.value | json}}</p>
-<h4>Name change log</h4>
-<div *ngFor="let name of nameChangeLog">{{name}}</div>
+
 <!-- 
       Copyright 2017-2018 Google Inc. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that

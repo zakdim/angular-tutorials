@@ -3,23 +3,18 @@ import { Component, Input, OnChanges }                   from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Address, Hero, states } from '../data-model';
-import { HeroService } from '../hero.service';
 
 @Component({
-  selector: 'app-hero-detail',
-  templateUrl: './hero-detail.component.html'
+  selector: 'app-hero-detail-8',
+  templateUrl: './hero-detail-8.component.html'
 })
-export class HeroDetailComponent implements OnChanges {
+export class HeroDetailComponent8 implements OnChanges {
   @Input() hero: Hero;
 
   heroForm: FormGroup;
   states = states;
-  nameChangeLog: string[] = [];
 
-  constructor(
-    private fb: FormBuilder,
-    private heroService: HeroService) {
-
+  constructor(private fb: FormBuilder) {
     this.createForm();
     this.logNameChange();
   }
@@ -33,15 +28,10 @@ export class HeroDetailComponent implements OnChanges {
     });
   }
 
-  logNameChange() {
-    const nameControl = this.heroForm.get('name');
-    nameControl.valueChanges.forEach(
-      (value: string) => this.nameChangeLog.push(value)
-    );
-  }
+  logNameChange() {/* Coming soon */}
 
   ngOnChanges() {
-    console.log("HeroDetailComponent.ngOnChange: " + JSON.stringify(this.hero));
+    console.log("HeroDetailComponent8.ngOnChange: " + JSON.stringify(this.hero));
     this.rebuildForm();
   }
 
@@ -69,33 +59,6 @@ export class HeroDetailComponent implements OnChanges {
   removeLair(index: number) {
     this.secretLairs.removeAt(index);
   }
-
-  onSubmit() {
-    this.hero = this.prepareSaveHero();
-    this.heroService.updateHero(this.hero).subscribe(/* error handling */);
-    this.rebuildForm();
-  }
-
-  prepareSaveHero(): Hero {
-    const formModel = this.heroForm.value;
-  
-    // deep copy of form model lairs
-    const secretLairsDeepCopy: Address[] = formModel.secretLairs.map(
-      (address: Address) => Object.assign({}, address)
-    );
-  
-    // return new `Hero` object containing a combination of original hero value(s)
-    // and deep copies of changed form model values
-    const saveHero: Hero = {
-      id: this.hero.id,
-      name: formModel.name as string,
-      // addresses: formModel.secretLairs // <-- bad!
-      addresses: secretLairsDeepCopy
-    };
-    return saveHero;
-  }
-
-  revert() { this.rebuildForm(); }
 }
 
 

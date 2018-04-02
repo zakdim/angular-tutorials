@@ -1,0 +1,61 @@
+<form [formGroup]="heroForm">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" formControlName="name">
+  </div>
+  <div formGroupName="address" class="card" style="background-color: #eee;">
+    <div class="card-body">
+      <h4 class="card-title">Secret Lair</h4>
+      <div class="form-group">
+        <label>Street</label>
+        <input class="form-control" formControlName="street">
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input class="form-control" formControlName="city">
+      </div>
+      <div class="form-group">
+        <label>State</label>
+        <select class="form-control" formControlName="state">
+          <option *ngFor="let state of states" [value]="state">{{state}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Zip Code</label>
+        <input class="form-control" formControlName="zip">
+      </div>
+    </div>
+  </div>
+  <div class="form-group radio">
+    <h4>Super power:</h4>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="power" value="flight">
+      <label class="form-check-label">Flight</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="power" value="x-ray vision">
+      <label class="form-check-label">X-ray vision</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="power" value="strength">
+      <label class="form-check-label">Strength</label>
+    </div>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="sidekick">
+    <label class="form-check-label">I have a sidekick.</label>
+  </div>
+</form>
+
+<p class="mt-2">heroForm value: {{ heroForm.value | json}}</p>
+<h4>Extra info for the curious:</h4>
+<p>Name value: {{ heroForm.get('name').value }}</p>
+
+<p>Street value: {{ heroForm.get('address.street').value}}</p>
+
+
+<!-- 
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
