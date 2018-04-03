@@ -1,0 +1,40 @@
+<h1>Angular 4: Template-driven forms</h1>
+<form #myForm="ngForm" (ngSubmit)="register(myForm)" novalidate>
+    <p>Is "myForm" valid? {{myForm.valid}}</p>
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" ngModel required/>
+  </div>
+
+  <div>
+    <label>Birth Year</label>
+    <input type="text" name="birthYear" ngModel required pattern="\\d{4,4}"/>
+  </div>
+
+  <div ngModelGroup="location">
+    <h3>Location</h3>
+    <div>
+      <label>Country</label>
+      <input type="text" name="country" ngModel required/>
+    </div>
+    <div>
+      <label>City</label>
+      <input type="text" name="city" ngModel/>
+    </div>
+  </div>
+
+  <div ngModelGroup="phoneNumbers">
+    <h3>Phone numbers</h3>
+    <div *ngFor="let phoneId of phoneNumberIds; let i=index;">
+      <label>Phone number {{i + 1}}</label>
+      <input type="text" name="phoneNumber[{{phoneId}}]" #phoneNumber="ngModel" ngModel required/>
+      <button type="button" (click)="remove(i); myForm.control.markAsTouched()">remove</button>
+    </div>
+    <button type="button" (click)="add(); myForm.control.markAsTouched()">Add phone number</button>
+  </div>
+
+  <button type="submit">Register</button>
+  <button type="button">Print to console</button>
+
+  <pre>{{myForm.value | json}}</pre>
+</form>
