@@ -1,0 +1,11 @@
+<div ngForm nestableForm rootNestableForm="true" #form4="ngForm">
+  <h3>Isolated form</h3>
+  <form-status formName="form-4" [isFormValid]="form4.valid"></form-status>
+  <input type="text" name="text4" ngModel required>
+
+  <div ngForm nestableForm #form41="ngForm">
+    <form-status formName="form-4.1" [isFormValid]="form41.valid"></form-status>
+    <input type="text" name="text41" ngModel required>
+  </div>
+
+</div>
