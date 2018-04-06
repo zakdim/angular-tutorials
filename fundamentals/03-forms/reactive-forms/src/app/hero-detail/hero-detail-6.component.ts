@@ -1,6 +1,6 @@
 /* tslint:disable:component-class-suffix */
-import { Component, Input, OnChanges }             from '@angular/core';
-import { FormBuilder, FormGroup, Validators }      from '@angular/forms';
+import { Component, Input, OnChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Hero, states } from '../data-model';
 

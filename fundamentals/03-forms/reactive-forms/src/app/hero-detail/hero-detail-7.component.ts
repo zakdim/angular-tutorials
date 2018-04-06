@@ -28,6 +28,7 @@ export class HeroDetailComponent7 implements OnChanges {
   }
 
   ngOnChanges() {
+    console.log('HeroDetailComponent7.ngOnChanges - rebuildForm');
     this.rebuildForm();
   }
 
