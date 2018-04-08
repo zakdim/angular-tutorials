@@ -1,4 +1,7 @@
 <form nestableForm #form1="ngForm">
   <form-status formName="form-1" [isFormValid]="form1.valid"></form-status>
-  <nested-form></nested-form>
+  <!-- <nested-form></nested-form> -->
+  <button type="button" style="margin-left: 15px" (click)="isReactiveDisabled = !isReactiveDisabled">Toggle Reactive form</button>
+  <reactive-form *ngIf="!isReactiveDisabled"></reactive-form>
+
 </form>
