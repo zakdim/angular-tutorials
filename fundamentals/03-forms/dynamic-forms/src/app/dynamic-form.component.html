@@ -11,6 +11,7 @@
         [disabled]="!form.valid">Save</button>
     </div>
   </form>
+  form: {{form.value | json}}
 
   <div *ngIf="payLoad" class="form-row">
     <strong>Saved the following values</strong><br>{{payLoad}}
