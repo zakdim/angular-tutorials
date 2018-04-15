@@ -10,7 +10,7 @@
 
         <label for="name">Name</label>
         <input id="name" class="form-control"
-               formControlName="name">
+               formControlName="name" required >
 
         <div *ngIf="name.invalid && (name.dirty || name.touched)"
              class="alert alert-danger">
@@ -22,7 +22,8 @@
             Name must be at least 4 characters long.
           </div>
           <div *ngIf="name.errors.forbiddenName">
-            Name cannot be Bob.
+            Name cannot be &quot;{{name.errors.forbiddenName.value}}&quot;.<hr>
+            Error: {{name.errors.forbiddenName | json}}
           </div>
         </div>
       </div>
