@@ -41,7 +41,7 @@ export class HeroDetailComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log("HeroDetailComponent.ngOnChange: " + JSON.stringify(this.hero));
+    console.log('HeroDetailComponent.ngOnChange: ' + JSON.stringify(this.hero));
     this.rebuildForm();
   }
 
@@ -54,7 +54,7 @@ export class HeroDetailComponent implements OnChanges {
 
   get secretLairs(): FormArray {
     return this.heroForm.get('secretLairs') as FormArray;
-  };
+  }
 
   setAddresses(addresses: Address[]) {
     const addressFGs = addresses.map(address => this.fb.group(address));
