@@ -1,3 +1,5 @@
+/* tslint:disable */
+// Exact copy of contact/highlight.directive except for color and message
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({ selector: '[highlight], input' })
@@ -5,9 +7,7 @@ import { Directive, ElementRef } from '@angular/core';
 export class HighlightDirective {
   constructor(el: ElementRef) {
     el.nativeElement.style.backgroundColor = '#efeeed';
-    // el.nativeElement.style.backgroundColor = 'yellow';
     console.log(
       `* Shared highlight called for ${el.nativeElement.tagName}`);
   }
 }
-
