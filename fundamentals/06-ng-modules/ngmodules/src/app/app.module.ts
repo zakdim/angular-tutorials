@@ -6,19 +6,23 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 /* Feature Modules */
+import { ContactModule } from './contact/contact.module';
 import { CoreModule } from './core/core.module';
 
 /* Routing Module */
+import { AppRoutingModule } from './app-routing.module';
 
 // @NgModule decorator with its metadata
 @NgModule({
   imports: [
     BrowserModule,
-    CoreModule.forRoot({userName: 'Miss Marple'})
+    ContactModule,
+    CoreModule.forRoot({userName: 'Miss Marple'}),
+    AppRoutingModule
   ],
   providers: [],
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   bootstrap: [AppComponent]
 })
