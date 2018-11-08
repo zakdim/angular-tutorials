@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+<!--
+<app-car></app-car>
+-->
+<app-injectors></app-injectors>
+<app-tests></app-tests>
+<!--
+<h2>User</h2>
+<p id="user">
+  {{userInfo}}
+  <button (click)="nextUser()">Next User</button>
+-->
+<p>
+<h3>Heroes for Authorized Users</h3>
+<app-heroes id="authorized" *ngIf="isAuthorized"></app-heroes>
+<h3>Heroes for Non-Authorized Users</h3>
+<app-heroes id="unauthorized" *ngIf="!isAuthorized"></app-heroes>
+<!--
+<app-heroes-tsp id="tspAuthorized" *ngIf="isAuthorized"></app-heroes-tsp>
+<app-providers></app-providers>
+-->
