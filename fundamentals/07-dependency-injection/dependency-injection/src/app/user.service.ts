@@ -7,8 +7,10 @@ export class User {
 }
 
 // TODO: get the user; don't 'new' it.
-const alice = new User('Alice', true);
-const bob = new User('Bob', false);
+// tslint:disable-next-line:prefer-const
+let alice = new User('Alice', true);
+// tslint:disable-next-line:prefer-const
+let bob = new User('Bob', false);
 
 @Injectable({
   providedIn: 'root'

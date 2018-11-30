@@ -1,8 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { HEROES } from './mock-heroes';
 import { Logger } from '../logger.service';
-import { UserService, User } from '../user.service';
-import { HeroModule } from './hero.module';
+import { UserService } from '../user.service';
 
 @Injectable({
   // we declare that this service should be created
@@ -11,20 +10,19 @@ import { HeroModule } from './hero.module';
   // we declare that this service should be created
   // by any injector that includes HeroModule.
   // providedIn: HeroModule,
-
+  useFactory: (logger: Logger, userService: UserService) =>
+    new HeroService(logger, userService.user.isAuthorized),
   deps: [Logger, UserService]
 })
 export class HeroService {
   constructor(
-    @Optional() private logger: Logger,
-    private userService: UserService,
+    private logger: Logger,
     private isAuthorized: boolean) { }
 
   getHeroes() {
-    const auth = this.isAuthorized ? 'authorized ' : 'unauthorized';
-    if (this.logger) {
-      this.logger.log(`Getting heroes for ${auth} user ${this.userService.user.name}.`);
-    }
+    // tslint:disable-next-line:prefer-const
+    let auth = this.isAuthorized ? 'authorized ' : 'unauthorized';
+    this.logger.log(`Getting heroes for ${auth} user.`);
     return HEROES.filter(hero => this.isAuthorized || !hero.isSecret);
   }
 }

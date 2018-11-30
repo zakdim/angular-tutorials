@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import { UserService } from './user.service';
+import { APP_CONFIG } from './app.config';
+import { AppConfig } from './app-config';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'dependency-injection';
+  title: string;
 
   constructor(
+    @Inject(APP_CONFIG) config: AppConfig,
     private userService: UserService) {
+      this.title = config.title;
   }
 
   get isAuthorized() { return this.user.isAuthorized; }

@@ -7,12 +7,15 @@ import { HeroTaxReturnComponent } from './hero-tax-return.component';
 import { HeroesListComponent } from './heroes-list.component';
 import { VillainsListComponent } from './villains-list.component';
 
+import { carComponents } from './car.components';
+
 @NgModule({
   declarations: [
     AppComponent,
+    carComponents,
     HeroesListComponent,
     HeroTaxReturnComponent,
-    VillainsListComponent
+    VillainsListComponent,
   ],
   imports: [
     BrowserModule,

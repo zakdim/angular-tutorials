@@ -11,6 +11,7 @@ export class HeroTaxReturnService {
   constructor(private heroService: HeroesService) { }
 
   set taxReturn(htr: HeroTaxReturn) {
+    console.log(`set taxReturn: ${JSON.stringify(htr)}`);
     this.originalTaxReturn = htr;
     this.currentTaxReturn = htr.clone();
   }
@@ -20,11 +21,16 @@ export class HeroTaxReturnService {
   }
 
   restoreTaxReturn() {
+    console.log(`start restoreTaxReturn(): ${JSON.stringify(this.taxReturn)}`);
     this.taxReturn = this.originalTaxReturn;
+    console.log(`end restoreTaxReturn(): ${JSON.stringify(this.taxReturn)}`);
   }
 
   saveTaxReturn() {
     this.taxReturn = this.currentTaxReturn;
-    this.heroService.saveTaxReturn(this.currentTaxReturn).subscribe();
+    this.heroService.saveTaxReturn(this.currentTaxReturn)
+      .subscribe(htr => {
+        console.log(`saved taxReturn: ${JSON.stringify(htr)}`);
+      });
   }
 }
