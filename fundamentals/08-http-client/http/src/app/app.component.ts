@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   showHeroes = false;
   showConfig = false;
-  showDownloader = true;
-  showUploader = false;
+  showDownloader = false;
+  showUploader = true;
   showSearch = false;
 
   toggleHeroes() { this.showHeroes = !this.showHeroes; }
